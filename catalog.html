@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>CATALOG</title>
+        <link rel="stylesheet" href="cat.css">
+</head>
+<body id="body" style="background-image:url(images.jpg)">
+    <h2>CATALOG</h2>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> SHOW ALL</button>
+  <button class="btn" onclick="filterSelection('nature')"> FICTION</button>
+  <button class="btn" onclick="filterSelection('cars')"> MANGA</button>
+  <button class="btn" onclick="filterSelection('people')"> SCIENTIFIC</button>
+</div>
+<strong><big><a href="cart2.html" style="float:right";>CART</a></strong></big><br>
+<strong><big><a href="HomePageNew.html" style="float:right";>GO BACK</a></strong></big>
+<div class="row">
+  <div class="column nature">
+    <div class="content">
+      <img src="harry.jpg" id="iid" alt="Harry Potter" style="width:100%">
+     
+      <h4 id="hid">Harry Potter and Sorcerers Stone</h4>
+      
+      <span>Rs.</span><p id="pid">400</p><button id="badd" onclick="amt()">ADD</button>
+    </div>
+  </div>
+  <div class="column nature">
+    <div class="content">
+      <img src="got.jpg" alt="Game Of Thrones" style="width:100%">
+      
+      <h4>Game Of Thrones</h4>
+      <p>Rs.600/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+  <div class="column nature">
+    <div class="content">
+      <img src="wwz.jpg" alt="World War Z" style="width:100%">
+      
+      <h4>World War Z</h4>
+      <p>Rs.300/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+
+  <div class="column cars">
+    <div class="content">
+      <img src="poke.jpg" alt="Poke" style="width:100%">
+      
+      <h4>Pokemon</h4>
+      <p>Rs.300/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+  <div class="column cars">
+    <div class="content">
+      <img src="tokyo.jpg" alt="Tokyo Ghoul" style="width:100%">
+      
+      <h4>Tokyo Ghoul</h4>
+      <p>Rs.400/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+  <div class="column cars">
+    <div class="content">
+      <img src="dbz.jpg" alt="Dragon Ball Z" style="width:100%">
+      <h4>Dragon Ball Z</h4>
+      <p>Rs.350/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+
+  <div class="column people">
+    <div class="content">
+      <img src="encyclo.jpg" alt="Encyclopedia" style="width:100%">
+      <h4>Encyclopedia</h4>
+      <p>Rs.800<button id="badd">ADD</button>p>
+    </div>
+  </div>
+  <div class="column people">
+    <div class="content">
+      <img src="forensic.jpg" alt="Forensic" style="width:100%">
+      <h4>Forensic</h4>
+      <p>Rs.500/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+  <div class="column people">
+    <div class="content">
+      <img src="geo.jpg" alt="Geology" style="width:100%">
+      <h4>Geology</h4>
+      <p>Rs.450/-<button id="badd">ADD</button></p>
+    </div>
+  </div>
+</div>
+<style>
+  #body{
+    background-image: url("images.jpg");
+  }
+</style>
+
+
+</body>
+<script>
+  function amt(){
+    let iid=document.getElementById('iid').src;
+    let pid=document.getElementById('pid').innerHTML;
+    let hid=document.getElementById('hid').innerHTML;
+    let amt={"iid":iid,"pid":pid,"hid":hid};
+    
+    let myamt = JSON.stringify(amt);
+    localStorage.setItem('cart',myamt);
+  }
+
+        filterSelection("all") // Execute the function and show all columns
+        function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("column");
+          if (c == "all") c = "";
+          // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+          for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+          }
+        }
+        
+        // Show filtered elements
+        function w3AddClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {
+              element.className += " " + arr2[i];
+            }
+          }
+        }
+        
+        // Hide elements that are not selected
+        function w3RemoveClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1); 
+            }
+          }
+          element.className = arr1.join(" ");
+        }
+        
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+          });
+        
+        }
+        </script>
+        
+</html>

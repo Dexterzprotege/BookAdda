@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SHOPPING CART</title>
+</head>
+<body id="body">
+    <P id="head"><big>SHOPPING CART</big></P>
+   <img id="i1" src="bag.png">
+    <div class="container">
+        <table id="cart" class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="width:50%">Product</th>
+                                <th style="width:10%">Price</th>
+                                <th style="width:8%">Quantity</th>
+                                <th style="width:22%" class="text-center">Subtotal</th>
+                                <th style="width:10%"></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                           
+                            <tr>
+                                <td data-th="Product">
+                                    <div class="row">
+                                        
+                                        <div class="col">
+                                            <h4 class="col1">Product 1</h4>
+                                            <p id="img"></p>
+                                            <p id="writescr"></p>
+                                            
+                                            <p>Description of the item brought</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </td>
+                                <td data-th="Price" id="cost"></td>
+                                <td data-th="Quantity">
+                                    <input type="number" class="quantity" value="1">
+                                </td>
+                                <td data-th="Subtotal" class="text-center">300</td>
+                                <td class="actions" data-th="">
+                                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                    <td data-th="Product">
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <h4 class="col2">Product 2</h4>
+                                                    <p>Description of the item brought</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </td>
+                                    <td data-th="Price">Rs.400</td>
+                                    <td data-th="Quantity">
+                                        <input type="number" class="quantity" value="2">
+                                    </td>
+                                    <td data-th="Subtotal" class="text-center">800</td>
+                                    <td class="actions" data-th="">
+                                        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                                    </td>
+    
+                            </tr>
+                            <hr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="visible-xs">
+                                <td class="total"><strong>Total 300</strong></td>
+                            </tr>
+                            <tr>
+                                <td><button id="b1" onclick="opencart()">Continue Shopping</a></button></td>
+                                <td colspan="2" class="hidden-xs"></td>
+                                <td class="hidden-xs text-center"><strong>Total Rs.1100</strong></td>
+                                <td><button id="b2"><a href="#" class="btn btn-success btn-block">Checkout> <i class="fa fa-angle-right"></i></a></button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+    </div>
+    <script>function opencart(){
+        window.open("catalog.html","_self");
+    
+    }
+    let x1 = JSON.parse(localStorage.getItem('cart'));    
+      
+    document.getElementById("cost").innerHTML=x1.pid;
+     document.getElementById("writescr").innerHTML=x1.hid;
+    </script>
+</body>
+<style>
+    #body{
+        background-image:url(images.jpg);
+    }
+    #head{
+        text-align: center;
+        font-size:20px;
+	color:greenyellow;
+	box-shadow: 2px 2px yellowgreen,-2px -2px rgba(0,0,0,0.5);
+    }
+    #b1{
+        width:300px;
+	height:60px;
+	border-radius:30px;
+	border:none;
+	font-size:20px;
+	background-color:greenyellow;
+	color:rgba(108, 40, 218, 0.8);
+	box-shadow: 2px 2px blueviolet,-2px -2px rgba(0,0,0,0.5);
+    }
+    #b2{
+        width:300px;
+	height:60px;
+	border-radius:30px;
+	border:none;
+	font-size:20px;
+	background-color:greenyellow;
+	color:rgba(255,255,255,0.8);
+	box-shadow: 2px 2px black,-2px -2px rgba(0,0,0,0.5);
+    }
+    .container{
+        width:80%;
+        margin-right:auto;
+    margin-left:auto;
+        opacity: 0.5;
+        background-color: rgb(199, 57, 57);
+    }
+    #i1{
+        background-color: lightyellow;
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+        max-height:100px;
+        max-width: 100px;
+        border-radius: 50%;
+    }
+
+    .table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+    }
+    .col1 {
+        color:peachpuff;
+	font-family: 'sans-serif'; 
+	font-size:20px;
+	text-align:justify;
+	text-shadow: 0 0 3px #FF0000;
+    }
+	.col2{
+        color:peachpuff;
+	font-family: 'sans-serif'; 
+	font-size:20px;
+	text-align:justify;
+	text-shadow: 0 0 3px #FF0000;
+    }
+	
+	.total{
+        color:peachpuff;
+	font-family: 'sans-serif'; 
+	font-size:20px;
+	text-align:justify;
+	text-shadow: 0 0 3px #FF0000;
+    }
+
+</style>
+</html>
